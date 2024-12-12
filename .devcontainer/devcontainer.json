@@ -1,0 +1,18 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "customizations": {
+      // Configure properties specific to VS Code.
+      "vscode": {
+          // Add the IDs of extensions you want installed when the container is created.
+          "extensions": [
+              "ms-python.python",
+              "ms-python.debugpy",
+              "ms-toolsai.jupyter",
+              "ms-toolsai.jupyter-renderers",
+              "charliermarsh.ruff",
+              "ms-azuretools.vscode-docker",
+              "github.codespace"]
+      }
+  },
+"postCreateCommand": ". ./.devcontainer/postCreateCommands.sh"
+}
