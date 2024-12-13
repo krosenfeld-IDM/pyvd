@@ -33,11 +33,6 @@ search = "version = {current_version}"
 replace = "version = {new_version}"
 
 [[tool.bumpversion.files]]
-file = "pyproject.toml"
-search = "current_version = {current_version}"
-replace = "current_version = {new_version}"
-
-[[tool.bumpversion.files]]
 file = "pyvd/version.py"
 search = "__version__ = {current_version}"
 replace = "__version__ = {new_version}"
