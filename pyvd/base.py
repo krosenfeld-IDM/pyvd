@@ -6,7 +6,7 @@ def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
     # Calculate vital dynamics
     diff_ratio = (pop_mat[:-1, :-1] - pop_mat[1:, 1:]) / np.where(pop_mat[:-1, :-1] != 0, pop_mat[:-1, :-1], np.nan)
 
-    t_delta = np.diff(year_vec)
+    t_delta = np.diff(year_vec) if len(year_vec) > 1 else np.array([])
     pow_vec = 365.0*t_delta
     mortvecs = 1.0-np.power(1.0-diff_ratio, 1.0/pow_vec)
     mortvecs = np.minimum(mortvecs, constants.MAX_DAILY_MORT)
