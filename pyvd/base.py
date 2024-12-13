@@ -29,7 +29,7 @@ def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
     brmultx_02[1::2] = brmultx_01[1:]-0.5
     brmulty_02[1::2] = brmulty_01[0:-1]
 
-    age_init_cdf = np.cumsum(pop_init[:-1])/np.sum(pop_init)
+    age_init_cdf = np.cumsum(pop_init[:-1]) / np.sum(pop_init) if np.sum(pop_init) != 0 else np.zeros_like(pop_init[:-1])
     age_x = [0] + age_init_cdf.tolist()
 
     birth_rate = brate_val/365.0/1000.0
