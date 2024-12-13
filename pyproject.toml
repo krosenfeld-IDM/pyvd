@@ -15,12 +15,12 @@ replace = "{new_version}"
 regex = false
 ignore_missing_version = false
 ignore_missing_files = false
-tag = false
+tag = true
 sign_tags = false
 tag_name = "v{new_version}"
 tag_message = "Bump version: {current_version} → {new_version}"
 allow_dirty = false
-commit = false
+commit = true
 message = "Bump version: {current_version} → {new_version}"
 commit_args = ""
 setup_hooks = []
@@ -31,3 +31,8 @@ post_commit_hooks = []
 filename = "pyproject.toml"
 search = 'version = "{current_version}"'
 replace = 'version = "{new_version}"'
+
+[[tool.bumpversion.files]]
+filename = "pyvd/version.py"
+search = '__version__ = "{current_version}"'
+replace = '__version__ = "{new_version}"'
