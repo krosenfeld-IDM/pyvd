@@ -97,7 +97,7 @@ def make_pop_dat(TLC=''):
             year_val = int(rval[10])
             if (year_val % 5):
                 continue
-            bpop = [int(1000*float(rval[idx].replace(' ', ''))) for idx in rng]
+            if len(rval) > max(rng): bpop = [int(1000*float(rval[idx].replace(' ', ''))) for idx in rng]
             pop_dat = np.vstack((pop_dat, np.array([year_val]+bpop)))
 
     # Add values from forward projections
