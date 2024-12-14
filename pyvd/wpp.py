@@ -106,7 +106,7 @@ def make_pop_dat(TLC=''):
             year_val = int(rval[10])
             if (year_val % 5):
                 continue
-            if (year_val == pop_dat[-1, 0]):
+            if pop_dat.size > 0 and (year_val == pop_dat[-1, 0]):
                 continue
             bpop = [int(1000*float(rval[idx].replace(' ', ''))) for idx in rng]
             pop_dat = np.vstack((pop_dat, np.array([year_val]+bpop)))
