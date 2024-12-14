@@ -1,0 +1,32 @@
+name: Run tests
+on: [pull_request, workflow_dispatch]
+
+jobs:
+  install_and_test:
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        os: ['ubuntu-latest']
+        python-version: ['3.10', '3.11', '3.12']
+    runs-on: ${{ matrix.os }}
+    name: Install and test
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@master
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+      - name: Install pyvd
+        run: pip install -e .
+      - name: Run tests
+        working-directory: ./tests
+        run: pytest test_*.py -n auto --durations=0 --junitxml=test-results.xml # Run actual tests
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test_results
+          path: tests/test-results.xml
