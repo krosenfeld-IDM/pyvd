@@ -1,5 +1,5 @@
 import numpy as np
-from pyvd import constants
+import pyvd
 
 def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
 
@@ -9,7 +9,7 @@ def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
     t_delta = np.diff(year_vec) if len(year_vec) > 1 else np.array([])
     pow_vec = 365.0*t_delta
     mortvecs = 1.0-np.power(1.0-diff_ratio, 1.0/pow_vec)
-    mortvecs = np.minimum(mortvecs, constants.MAX_DAILY_MORT)
+    mortvecs = np.minimum(mortvecs, pyvd.constants.MAX_DAILY_MORT)
     mortvecs = np.maximum(mortvecs, 0.0)
     tot_pop = np.sum(pop_mat, axis=0)
     tpop_mid = (tot_pop[:-1]+tot_pop[1:])/2.0
@@ -40,12 +40,23 @@ def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
     mort_year[1::2] = year_vec[1:-1]-1e-4
     mort_year = mort_year.tolist()
 
-    mort_mat = np.zeros((len(constants.MORT_XVAL), len(mort_year)))
+    mort_mat = np.zeros((len(pyvd.constants.MORT_XVAL), len(mort_year)))
 
     mort_mat[0:-2:2, 0::2] = mortvecs
     mort_mat[1:-2:2, 0::2] = mortvecs
     mort_mat[0:-2:2, 1::2] = mortvecs[:, :-1]
     mort_mat[1:-2:2, 1::2] = mortvecs[:, :-1]
-    mort_mat[-2:, :] = constants.MAX_DAILY_MORT
+    mort_mat[-2:, :] = pyvd.constants.MAX_DAILY_MORT
 
     return (mort_year, mort_mat, age_x, birth_rate, brmultx_02, brmulty_02)
+
+
+if __name__ == '__main__':
+    pop_input = pyvd.make_pop_dat('IND')
+    year_vec = pop_input[0, :] - pyvd.constants.BASE_YEAR
+    year_init = pyvd.constants.BASE_YEAR - pyvd.constants.BASE_YEAR
+    pop_mat = pop_input[1:, :] + 0.1
+    pop_init = [np.interp(year_init, year_vec, pop_mat[idx, :])
+                for idx in range(pop_mat.shape[0])]
+    vd_tup = demog_vd_calc(year_vec, year_init, pop_mat, pop_init)
+    print(len(vd_tup))
