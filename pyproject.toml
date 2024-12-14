@@ -4,7 +4,7 @@ version = "0.3.0"
 description = "Calculate birthrate and mortality from WPP data"
 authors = [
   { name="Katherine Rosenfeld"},
-  { name="Kurt Frey", email="kurt.frey@gatesfoundation.org"}
+  { name="Kurt Frey"}
 ]
 readme = "README.md"
 requires-python = ">=3.10"
