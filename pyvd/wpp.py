@@ -93,7 +93,7 @@ def make_pop_dat(TLC=''):
 
     # Add values from retrospective estimates
     for rval in flines_rev:
-        if (reprule(rval[2]) == tlc_wpp_dict[TLC]):
+        if TLC in tlc_wpp_dict and reprule(rval[2]) == tlc_wpp_dict[TLC]:
             year_val = int(rval[10])
             if (year_val % 5):
                 continue
