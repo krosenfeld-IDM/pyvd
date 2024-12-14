@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "pyvd"
 version = "0.3.1"
@@ -10,12 +14,16 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "numpy>=2.2.0",
+    "pytest>=8.3.4",
 ]
 license = {file = "LICENSE"}
 
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["pyvd*"]
+
+[tool.setuptools.package-data]
+pyvd = ["data/*"]  # Include all files in pyvd/data
 
 [tool.bumpversion]
 current_version = "0.3.1"
