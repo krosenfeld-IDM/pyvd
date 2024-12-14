@@ -8,7 +8,7 @@ def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
 
     t_delta = np.diff(year_vec) if len(year_vec) > 1 else np.array([])
     pow_vec = 365.0*t_delta
-    mortvecs = 1.0-np.power(1.0-diff_ratio, 1.0/pow_vec)
+    mortvecs = 1.0 - np.power(1.0 - np.nan_to_num(diff_ratio, nan=0.0), 1.0 / np.nan_to_num(pow_vec, nan=1.0))
     mortvecs = np.minimum(mortvecs, pyvd.constants.MAX_DAILY_MORT)
     mortvecs = np.maximum(mortvecs, 0.0)
     tot_pop = np.sum(pop_mat, axis=0)
