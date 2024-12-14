@@ -3,7 +3,7 @@ name = "pyvd"
 version = "0.3.0"
 description = "Calculate birthrate and mortality from WPP data"
 authors = [
-  { name="Katherine Rosenfeld", email="katherine.rosenfeld@gatesfoundation.org"},
+  { name="Katherine Rosenfeld"},
   { name="Kurt Frey", email="kurt.frey@gatesfoundation.org"}
 ]
 readme = "README.md"
