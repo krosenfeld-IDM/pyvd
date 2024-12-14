@@ -1,12 +1,17 @@
 [project]
 name = "pyvd"
 version = "0.3.0"
-description = "Add your description here"
+description = "Calculate birthrate and mortality from WPP data"
+authors = [
+  { name="Katherine Rosenfeld"},
+  { name="Kurt Frey"}
+]
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "numpy>=2.2.0",
 ]
+license = {file = "LICENSE"}
 
 [tool.bumpversion]
 current_version = "0.3.0"
