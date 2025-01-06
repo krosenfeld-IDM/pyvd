@@ -11,10 +11,10 @@ authors = [
   { name="Kurt Frey"}
 ]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 dependencies = [
-    "numpy>=2.2.0",
-    "pytest>=8.3.4",
+    "numpy>=1.0",
+    "pytest",
 ]
 license = {file = "LICENSE"}
 
