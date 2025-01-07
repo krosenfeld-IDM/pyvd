@@ -65,7 +65,7 @@ def reprule(revval):
 
 def make_pop_dat(TLC:str = ''):
     """
-    Function to parse the 2022 WPP data and return the population data for a given country by age group.
+    Function to parse the 2022 WPP data and return the population data (#) for a given country by age group.
 
     Parameters
     ----------
