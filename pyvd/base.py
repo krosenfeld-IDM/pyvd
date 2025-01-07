@@ -2,6 +2,41 @@ import numpy as np
 import pyvd
 
 def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
+    """
+    Calculate vital dynamics consistent with a population pyramid (# of people specific per age per year).
+
+    Parameters
+    ----------
+    year_vec : array_like
+        Vector of years.
+    year_init : float
+        Initial year.
+    pop_mat : array_like
+        Population matrix (age_bin x year).
+    pop_init : array_like
+        Initial population in each age bin.
+
+    Returns
+    -------
+    vd_tup : tuple
+        Tuple containing the following elements:
+        - mort_year : array_like
+            Vector of years relative to year_init.
+        - mort_mat : array_like
+            Matrix of mortality rates by age group.
+        - age_x : array_like
+            The cdf for ages during population initialization 
+        - birth_rate : float
+            Initial birth rate (births / year / 1kpop).
+        - brmultx_02 : array_like
+            Birth rate multiplier x values (days).
+        - brmulty_02 : array_like
+            Birth rate multiplier y values (births / year / 1kpop).
+
+    Notes
+    -----
+    Some outputs (mort_mat) are forced into stair-step format like [x1, x2, x2+eps, x3] and [y1, y1, y2, y2] 
+    """
 
     # Calculate vital dynamics
     diff_ratio = (pop_mat[:-1, :-1] - pop_mat[1:, 1:]) / np.where(pop_mat[:-1, :-1] != 0, pop_mat[:-1, :-1], np.nan)
