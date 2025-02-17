@@ -16,9 +16,9 @@ class TestBase(unittest.TestCase):
         self.assertEqual(len(vd_tup), 5)
         self.assertIsInstance(vd_tup[0], list)  # mort_year
         self.assertIsInstance(vd_tup[1], np.ndarray)  # mort_mat
-        self.assertIsInstance(vd_tup[3], float)  # birth_rate
-        self.assertIsInstance(vd_tup[4], np.ndarray)  # brmultx_02
-        self.assertIsInstance(vd_tup[5], np.ndarray)  # brmulty_02
+        self.assertIsInstance(vd_tup[2], float)  # birth_rate
+        self.assertIsInstance(vd_tup[3], np.ndarray)  # brmultx_02
+        self.assertIsInstance(vd_tup[4], np.ndarray)  # brmulty_02
 
 if __name__ == '__main__':
     unittest.main()
