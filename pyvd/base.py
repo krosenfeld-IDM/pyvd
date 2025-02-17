@@ -20,7 +20,7 @@ def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
 
     Returns
     -------
-    vd_tup : tuple
+    vd_tup : named tuple
         Tuple containing the following elements:
         - mort_year : array_like
             Vector of years relative to year_init.
@@ -29,11 +29,11 @@ def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
         - age_x : array_like
             The cdf for ages during population initialization
         - birth_rate : float
-            Initial birth rate (births / year / 1kpop).
-        - brmultx_02 : array_like
+            Initial birth rate (births / person / day).
+        - br_mult_x : array_like
             Birth rate multiplier x values (days).
-        - brmulty_02 : array_like
-            Birth rate multiplier y values (births / year / 1kpop).
+        - br_mult_y : array_like
+            Birth rate multiplier y values.
 
     Notes
     -----
