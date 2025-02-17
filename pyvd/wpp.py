@@ -63,7 +63,25 @@ def reprule(revval):
     return revval
 
 
-def make_pop_dat(TLC=''):
+def make_pop_dat(TLC:str = ''):
+    """
+    Function to parse the 2022 WPP data and return the population data (#) for a given country by age group.
+
+    Parameters
+    ----------
+    TLC : str
+        The three-letter ISO-3 country code (e.g., 'IND', 'NGA')
+
+    Returns
+    -------
+    pop_dat : A [22,31] numpy.ndarray. The first row (pop_dat[0,:] is the year) and the remaining rows are the population data for each age group.
+
+    Notes
+    -----
+    Age groups (21 groups) are as follows:
+        0-4,5-9,10-14,15-19,20-24,25-29,30-34,35-39,40-44,45-49,50-54,55-59,60-64,65-69,70-74,75-79,80-84,85-89,90-94,95-99,100+ (age groups)
+    Data are returned for every 5 years from 1950 to 2100 (set by 2022 WPP)
+    """
 
     # Name references
     tlc_wpp_dict = dict()
@@ -87,9 +105,9 @@ def make_pop_dat(TLC=''):
     with open(wppf2, errors='ignore') as fid01:
         flines_fwd = [val.strip().split(',') for val in fid01.readlines()]
 
-    # Construct output data structure
+    # Construct output data structure (set for 2022 data)
     rng = range(11, 32)
-    pop_dat = np.zeros((0, 22), dtype=int)
+    pop_dat = np.zeros((0, 22), dtype=int) # years, 
 
     # Add values from retrospective estimates
     for rval in flines_rev:
@@ -114,7 +132,25 @@ def make_pop_dat(TLC=''):
     return pop_dat.T
 
 
-def make_fert_dat(TLC=''):
+def make_fert_dat(TLC:str = ''):
+    """
+    Function to parse the 2022 WPP data and return the fertility data for a given country by age group.
+
+    Parameters
+    ----------
+    TLC : str
+        The three-letter ISO-3 country code (e.g., 'IND', 'NGA')
+
+    Returns
+    -------
+    fert_dat : A [21,31] numpy.ndarray. The first row (fert_dat[0,:] is the year) and the remaining rows are the fertility data for each age group.
+    
+    Notes
+    -----
+    Age groups (21 groups) are as follows:
+        0-4,5-9,10-14,15-19,20-24,25-29,30-34,35-39,40-44,45-49,50-54,55-59,60-64,65-69,70-74,75-79,80-84,85-89,90-94,95-99,100+ (age groups)
+    Data are returned for every 5 years from 1950 to 2100 (set by 2022 WPP)    
+    """
 
     # Name references
     tlc_wpp_dict = dict()
