@@ -3,7 +3,7 @@ import pyvd
 from collections import namedtuple
 
 
-def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
+def demog_vd_calc(year_vec, year_init, pop_mat):
     """
     Calculate vital dynamics consistent with a population pyramid (# of people specific per age per year).
 
@@ -15,8 +15,6 @@ def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
         Initial year.
     pop_mat : array_like
         Population matrix (age_bin x year).
-    pop_init : array_like
-        Initial population in each age bin.
 
     Returns
     -------
@@ -26,8 +24,6 @@ def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
             Vector of years relative to year_init.
         - mort_mat : array_like
             Matrix of mortality rates by age group.
-        - age_x : array_like
-            The cdf for ages during population initialization
         - birth_rate : float
             Initial birth rate (births / person / day).
         - br_mult_x : array_like
@@ -71,13 +67,6 @@ def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
     brmultx_02[1::2] = brmultx_01[1:] - 0.5
     brmulty_02[1::2] = brmulty_01[0:-1]
 
-    age_init_cdf = (
-        np.cumsum(pop_init[:-1]) / np.sum(pop_init)
-        if np.sum(pop_init) != 0
-        else np.zeros_like(pop_init[:-1])
-    )
-    age_x = [0] + age_init_cdf.tolist()
-
     birth_rate = brate_val / 365.0 / 1000.0
     mort_year = np.zeros(2 * year_vec.shape[0] - 3)
 
@@ -95,9 +84,9 @@ def demog_vd_calc(year_vec, year_init, pop_mat, pop_init):
 
     VitalDynamics = namedtuple(
         "VitalDynamics",
-        "mort_year mort_mat age_x birth_rate br_mult_x  br_mult_y",
+        "mort_year mort_mat birth_rate br_mult_x  br_mult_y",
     )
-    return VitalDynamics(mort_year, mort_mat, age_x, birth_rate, brmultx_02, brmulty_02)
+    return VitalDynamics(mort_year, mort_mat, birth_rate, brmultx_02, brmulty_02)
 
 
 if __name__ == "__main__":
