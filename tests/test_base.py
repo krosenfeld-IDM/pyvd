@@ -13,7 +13,7 @@ class TestBase(unittest.TestCase):
         pop_mat = pop_input[1:, :] + 0.1
         vd_tup = demog_vd_calc(year_vec, year_init, pop_mat)
         
-        self.assertEqual(len(vd_tup), 6)
+        self.assertEqual(len(vd_tup), 5)
         self.assertIsInstance(vd_tup[0], list)  # mort_year
         self.assertIsInstance(vd_tup[1], np.ndarray)  # mort_mat
         self.assertIsInstance(vd_tup[3], float)  # birth_rate
