@@ -16,7 +16,7 @@ runs:
       uses: astral-sh/setup-uv@v4
       with:
         version: "latest"
-    -name: Install pixi
+    - name: Install pixi
     - uses: prefix-dev/setup-pixi@v0.8.2
       with:
         pixi-version: "latest"
