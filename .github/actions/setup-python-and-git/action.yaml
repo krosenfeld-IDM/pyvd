@@ -22,8 +22,6 @@ runs:
         pixi-version: v0.41.1
         cache: false
         manifest-path: pyproject.toml
-    - run: pixi run test
-      shell: bash
     - name: Git check
       run: |
         git config --global user.email "action@github.actions"
