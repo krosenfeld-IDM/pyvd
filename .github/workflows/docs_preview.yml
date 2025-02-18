@@ -38,8 +38,9 @@ jobs:
         run: |
           cd docs
           uv run bash build_docs
+          cd ..
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
         with:
-          source-dir: ./site/
+          source-dir: ./docs/_build
