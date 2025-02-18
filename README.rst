@@ -1,7 +1,7 @@
 pyvd
 ====
 
-pyvd calculates birth and mortality rates from UN WPP projections for a single country.
+pyvd calculates birth and mortality rates from UN WPP projections for a single country. 
 
 Quickstart
 ----------
@@ -19,6 +19,7 @@ In a python terminal or script, calculate demography (e.g., birth rates by year)
     pop_mat = pop_input[1:, :] + 0.1
     vd_tup = pyvd.demog_vd_calc(year_vec, year_init, pop_mat)
 
+Additional examples can be found in the `documentation <https://krosenfeld-idm.github.io/pyvd/>`.
 
 More about the data
 -------------------
