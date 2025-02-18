@@ -21,8 +21,7 @@ runs:
       with:
         pixi-version: "latest"
         cache: true
-        auth-host: prefix.dev
-        auth-token: ${{ secrets.PREFIX_DEV_TOKEN }}
+        cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}        
     - run: pixi run test   
     - name: Git check
       run: |
