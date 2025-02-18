@@ -18,6 +18,7 @@ runs:
         version: "latest"
     - name: Install pixi
       run: | 
+        echo "/home/runner/.local/" >> "$PIXI_HOME"
         curl -fsSL https://pixi.sh/install.sh | bash
         eval "$(pixi completion --shell bash)"
       shell: bash
