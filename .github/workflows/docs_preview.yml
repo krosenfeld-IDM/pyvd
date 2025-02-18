@@ -30,9 +30,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        uses: prefix-dev/setup-pixi@v0.8.2
         run: |     
-          pixi global install pandoc
           uv sync -p 3.12 --group docs
 
       - name: Build documentation
