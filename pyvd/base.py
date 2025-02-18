@@ -5,34 +5,30 @@ from collections import namedtuple
 
 def demog_vd_calc(year_vec, year_init, pop_mat):
     """
-    Calculate vital dynamics consistent with a population pyramid (# of people specific per age per year).
+    Calculate vital dynamics consistent with a population pyramid (# of people specific per age per year). 
 
     Parameters
     ----------
-    year_vec : list or array
-        vector of years
+    year_vec : list
+        List of years
     year_init : float
-        initial year
-    pop_mat : list or array
-        populationg matrix (age x year)
+        Initial year
+    pop_mat : list
+        Population matrix (age x year)
 
     Returns
     -------
-    A named tuple containing the following elements:    
-    mort_year : list
-        vector of years relative to ``year_init``.
-    mort_mat :  list
-        matrix of mortality rates by age group.
-    birth_rate : float
-        initial birth rate (births per person per day).
-    br_mult_x : array_like 
-        birth rate multiplier x values (days).
-    br_mult_y : array_like
-        birth rate multiplier y values.
+    vd: namedtuple
     
+        - **mort_year** (List[int]): Vector of years relative to `year_init`.
+        - **mort_mat** (List[List[float]]): Matrix of mortality rates by age group.
+        - **birth_rate** (float): Initial birth rate (births per person per day).
+        - **br_mult_x** (List[int]): Birth rate multiplier x values (days).
+        - **br_mult_y** (List[float]): Birth rate multiplier y values.
+
     Notes
     -----
-    Some outputs (e.g., ``mort_mat``) are forced into a stair-step format like ``[x1, x2, x2+eps, x3]`` and ``[y1, y1, y2, y2]``.
+    Some outputs (e.g., ``mort_mat``) are forced into a stair-step format like ``[x1, x2, x2+eps, x3]`` and ``[y1, y1, y2, y2]``.    
     """
 
     # Calculate vital dynamics
