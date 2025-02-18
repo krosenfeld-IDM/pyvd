@@ -7,33 +7,21 @@ def demog_vd_calc(year_vec, year_init, pop_mat):
     """
     Calculate vital dynamics consistent with a population pyramid (# of people specific per age per year).
 
-    Parameters
-    ----------
-    year_vec : array_like
-        Vector of years.
-    year_init : float
-        Initial year.
-    pop_mat : array_like
-        Population matrix (age_bin x year).
-
-    Returns
-    -------
-    vd_tup : named tuple
-        Tuple containing the following elements:
-        - mort_year : array_like
-            Vector of years relative to year_init.
-        - mort_mat : array_like
-            Matrix of mortality rates by age group.
-        - birth_rate : float
-            Initial birth rate (births / person / day).
-        - br_mult_x : array_like
-            Birth rate multiplier x values (days).
-        - br_mult_y : array_like
-            Birth rate multiplier y values.
-
-    Notes
-    -----
-    Some outputs (mort_mat) are forced into stair-step format like [x1, x2, x2+eps, x3] and [y1, y1, y2, y2]
+    :param array_like year_vec: Vector of years.
+    :param float year_init: Initial year.
+    :param array_like pop_mat: Population matrix (age_bin x year).
+    
+    :returns: A named tuple containing the following elements:
+        - **mort_year** (*array_like*): Vector of years relative to `year_init`.
+        - **mort_mat** (*array_like*): Matrix of mortality rates by age group.
+        - **birth_rate** (*float*): Initial birth rate (births per person per day).
+        - **br_mult_x** (*array_like*): Birth rate multiplier x values (days).
+        - **br_mult_y** (*array_like*): Birth rate multiplier y values.
+    :rtype: namedtuple
+    
+    :notes:
+        Some outputs (e.g., `mort_mat`) are forced into a stair-step format like
+        ``[x1, x2, x2+eps, x3]`` and ``[y1, y1, y2, y2]``.
     """
 
     # Calculate vital dynamics
