@@ -14,9 +14,32 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
     "numpy>=1.0",
-    "pytest",
 ]
 license = {file = "LICENSE"}
+
+[dependency-groups]
+dev = [
+  "pytest"
+]
+
+docs = [
+  "pandoc",
+  "pypandoc",
+  "sphinx>=7.3.7",
+  "sphinx-autodoc-typehints",
+  "pydata-sphinx-theme",
+  "sphinx-design",
+  "readthedocs-sphinx-search",
+  "sphinxcontrib-napoleon",
+  "ipykernel", # For tutorials,
+  "ipywidgets", # For the tutorials,
+  "nbconvert>=7.10.0", # For tutorials,
+  "nbsphinx>=0.9.5", # For tutorials,
+  "plantweb",
+  "sciris",
+  "matplotlib",
+  "scipy"
+]
 
 [tool.setuptools.packages.find]
 where = ["."]
