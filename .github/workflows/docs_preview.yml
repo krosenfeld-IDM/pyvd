@@ -33,13 +33,13 @@ jobs:
         run: |     
           uv sync -p 3.12 --group docs
 
-      - name: Build documentation
-        run: |
-          cd docs
-          uv run bash build_docs
-          cd ..
+      # - name: Build documentation
+      #   run: |
+      #     cd docs
+      #     uv run bash build_docs
+      #     cd ..
 
-      - name: Deploy preview
-        uses: rossjrw/pr-preview-action@v1
-        with:
-          source-dir: ./docs/_build
+      # - name: Deploy preview
+      #   uses: rossjrw/pr-preview-action@v1
+      #   with:
+      #     source-dir: ./docs/_build
