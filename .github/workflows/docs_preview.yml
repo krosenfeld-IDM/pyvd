@@ -36,7 +36,9 @@ jobs:
       - name: Build documentation
         run: |
           source .venv/bin/activate
-          bash docs/build_docs
+          cd docs
+          bash build_docs
+          cd ..
 
       # - name: Deploy preview
       #   uses: rossjrw/pr-preview-action@v1
