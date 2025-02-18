@@ -27,6 +27,7 @@ jobs:
       - name: Install dependencies
         run: |
           git pull --all
+          pixi global install pandoc
           uv sync -p 3.12 --group docs
 
       - name: Build static files
