@@ -1,25 +1,6 @@
 ﻿demog\_vd\_calc
 ===============
 
-.. automodule:: pyvd.demog_vd_calc
+.. currentmodule:: pyvd
 
-   
-   
-   
-
-   
-   
-   
-
-   
-   
-   
-
-   
-   
-   
-
-
-
-
-
+.. autofunction:: demog_vd_calc

@@ -1,25 +1,6 @@
 ﻿make\_fert\_dat
 ===============
 
-.. automodule:: pyvd.make_fert_dat
+.. currentmodule:: pyvd
 
-   
-   
-   
-
-   
-   
-   
-
-   
-   
-   
-
-   
-   
-   
-
-
-
-
-
+.. autofunction:: make_fert_dat
