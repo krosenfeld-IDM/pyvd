@@ -22,7 +22,6 @@ runs:
         pixi-version: "latest"
         cache: true
         cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}        
-    - run: pixi run test   
     - name: Git check
       run: |
         git config --global user.email "action@github.actions"
