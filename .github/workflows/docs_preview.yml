@@ -32,7 +32,7 @@ jobs:
       - name: Install dependencies
         run: |
           pixi global install pandoc
-          uv sync -p 3.12 --group docs
+          uv sync --group docs
 
       - name: Build documentation
         run: |
