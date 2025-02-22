@@ -11,7 +11,7 @@ on_rtd = os.environ.get('READTHEDOCS') == 'True'
 
 # -- Project information -----------------------------------------------------
 
-project = 'pybd'
+project = 'pyvd'
 copyright = f'2024 - {sc.now().year}, Bill & Melinda Gates Foundation. All rights reserved. These docs were built for pyvd v{pyvd.__version__}'
 
 # The short X.Y version
