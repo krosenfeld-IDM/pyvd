@@ -1,12 +1,12 @@
 name: Deploy PR previews
 
 on:
-  # pull_request:
-  #   types:
-  #     - opened
-  #     - reopened
-  #     - synchronize
-  #     - closed
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
 
 concurrency: preview-${{ github.ref }}
 
@@ -27,7 +27,7 @@ jobs:
       - name: Setup Python and Git
         uses: ./.github/actions/setup-python-and-git
         with:
-          python-version: '3.12'
+          python-version: '3.10'
 
       - name: Install dependencies
         run: |
@@ -41,7 +41,7 @@ jobs:
           bash build_docs
           cd ..
 
-      - name: Deploy preview
-        uses: rossjrw/pr-preview-action@v1
-        with:
-          source-dir: ./docs/_build/html
+      # - name: Deploy preview
+      #   uses: rossjrw/pr-preview-action@v1
+      #   with:
+      #     source-dir: ./docs/_build/html
